@@ -48,6 +48,7 @@
 \newcommand{\argmax}{\operatorname{argmax}}
 \newcommand{\supp}{\operatorname{supp}}
 \begin{document}
+\tableofcontents
 \chapter{The Littlewood-Paley Theory and Multipliers}
 \begin{note}
     In this book notation, the Fourier transform of $f$ is $\int f(x)e^{2\pi i t\cdot x} dx$ instead of $\int f(x)e^{-2\pi i t\cdot x} dx$. And the inverse Fourier transform in this book is $\int \hat{f}(x)e^{-2\pi i t\cdot x} dx$. But we will still use the common notation.
@@ -211,7 +212,20 @@ The author describes two problems:
     \item Can the rectangles of inequality \eqref{ieq: partial sum operator inequality 2} be replaced by rectangles that are each arbitrarily rotated?
 \end{enumerate}
 We know the the answer of first problems can be affirmative only in the range $\frac{2n}{n+1}<p<\frac{2n}{n-1}$. The solution of first problem implies the resolution of the second problem for the same $p$. And the answer of the second problem is in the negative for $p$ outside the interval $\frac{2n}{n+1}\leq p\leq \frac{2n}{n-1}$.\par
-Also there is a continuous analogue of inequality \eqref{ieq: partial sum operator inequality 2}. Let $(\Gamma,d\gamma)$ be an abstract measure space. We can replace the sequence Hilbert space by square integrable functions space $L^2(\Gamma,d\gamma)$. And $\rho_\gamma=\rho(\gamma)$ is a measurable function from $\Gamma$ to rectangles in $\mathbb{R}^n$.\par
+Also there is a continuous analogue of inequality \eqref{ieq: partial sum operator inequality 2}. Let $(\Gamma,d\gamma)$ be an abstract measure space. We can replace the sequence Hilbert space by square integrable functions space $L^2(\Gamma,d\gamma)$. The sum is replaced by integration on $\Gamma$. And $\rho_\gamma=\rho(\gamma)$ is a measurable function from $\Gamma$ to rectangles in $\mathbb{R}^n$. $\rho(\gamma)$ maps each $\gamma$ to the vertices of rectangles.\par
+Suppose $f\in L^p(\mathbb{R}^n,\mathscr{H})$, we have
+\begin{equation*}
+    \abs{f}=(\int_{\Gamma}\abs{f(x,\gamma)}^2d\gamma)^\frac{1}{2}
+\end{equation*}
+and $\norm{f}_p=(\int\abs{f}^p)^\frac{1}{p}$.
+Let $\mathscr{R}=\{\rho_\gamma\}_{\gamma\in \Gamma}$. Here $\{\rho_\gamma\}_{\gamma\in \Gamma}$ is collection of points $(\gamma,\mathbb{R}^n)$. Thus there is actually one function $\rho(\gamma)$. Then $S_{\mathscr{R}}f$ is defined to be:
+\begin{equation*}
+    S_{\mathscr{R}}f=S_{\rho_\gamma}f(x,\gamma)
+\end{equation*}
+where $S_{\rho_\gamma}f(\xi,\gamma)^\wedge=\chi_{\rho_\gamma}(\xi)f(\xi,\gamma)^\wedge$. We have inequality:
+\begin{equation*}
+    \norm{S_{\mathscr{R}}f}_p=\int_{\mathbb{R}^n}(\int_{\Gamma}\abs{S_{\rho_\gamma}f(x,\gamma)}^2d\gamma)^\frac{p}{2}dx)^\frac{1}{p}\leq\int_{\mathbb{R}^n}(\int_{\Gamma}\abs{f(x,\gamma)}^2d\gamma)^\frac{p}{2}dx)^\frac{1}{p}\leq \norm{f}_p
+\end{equation*}
 \section{The dyadic decomposition}
 First we introduce the dyadic decomposition of $\mathbb{R}$. We decompose $\mathbb{R}\setminus \{0\}$ as $(\cup_{k=\infty}^\infty [2^k,2^{k+1}])\cup(\cup_{k=\infty}^\infty [-2^{k+1},-2^k])$. Then we consider the product of intervals in decomposition of $\mathbb{R}$. This is the dyadic decomposition of $\mathbb{R}^n$ and we denote as $\Delta$.\par
 Recall the partial sum operator, we have:
@@ -487,8 +501,7 @@ where $m$ is a finite value. Thus $\int_{\mathbb{R}^n}\abs{(\frac{\partial}{\par
 %         \leq & C'\abs{x}^{k-\abs{\alpha}}{e^{-2\pi\abs{x}y}}\sum_{\alpha=\beta+\gamma}\sum_{l=1}^{\abs{\gamma}}(2\pi y)^l\abs{x}^{l}\\
 %     \end{align*}
 % \end{note}
-\section{Details of proof and errata, section 4 and 5}
-
+\section{Details of proof and errata, section 4, 5 and 6}
 \begin{note}[Dual in section 5.3.1]
     \begin{align*}
         \int f\bar{g}dx=&<f,g>=\frac{1}{4}\sum_{k=0}^3 i^k\norm{f+i^kg}_2^2=\frac{1}{4}\sum_{k=0}^3 i^k\sum_{\rho\in \Delta}\norm{S_\rho(f+i^kg)}_2^2\\
@@ -548,4 +561,81 @@ When $I=[-2^{m+1},-2^m]$ the inequality also holds.
         B_p\norm{T_t^Nf}_p\leq\norm{(\sum_\rho \abs{S_\rho (T_t^Nf)}^2)^\frac{1}{2}}_p\leq\norm{(\sum_{m=0}^N \abs{S_{I_m}f}^2)^\frac{1}{2}}_p\leq C_p\norm{f}_p
     \end{equation*}
 \end{note}
+\begin{errata}[P111]
+    $S_t$ is the multiplier transformation corresponding to the rectangle $t_1<x_1<2^{k+1}$, $t_2<x_2<2^{l+1}$.
+\end{errata}
+\begin{note}[equation (59) and (60)]
+    You can refer section 6.2.2 in \emph{Classical Fourier Analysis}.\par
+    We have:
+    \begin{align*}
+        &S_\rho T_mf(y_1,y_2)\\
+        =&\int_{\mathbb{R}}\int_{\mathbb{R}}\chi_\rho(x_1,x_2)m(x_1,x_2)\Hat{f}(x_1,x_2)e^{2\pi i x\cdot y}dx_1dx_2\\
+        =&\int_{2^l}^{2^{l+1}}\int_{2^k}^{2^{k+1}}\chi_\rho(x_1,x_2)m(x_1,x_2)\Hat{f}(x_1,x_2)e^{2\pi i x\cdot y}dx_1dx_2\\
+        =&\int_{2^l}^{2^{l+1}}\int_{2^k}^{2^{k+1}}\chi_\rho(x_1,x_2)(\int_{2^l}^{x_2}\int_{2^k}^{x_1}\frac{\partial^2 m(t_1,t_2)}{\partial t_1\partial t_2}dt_1dt_2)\Hat{f}(x_1,x_2)e^{2\pi i x\cdot y}dx_1dx_2\\
+        &+\int_{2^l}^{2^{l+1}}\int_{2^k}^{2^{k+1}}\chi_\rho(x_1,x_2)(\int_{2^k}^{x_1}\frac{\partial^2 m(t_1,2^l)}{\partial t_1}dt_1)\Hat{f}(x_1,x_2)e^{2\pi i x\cdot y}dx_1dx_2\\
+        &+\int_{2^l}^{2^{l+1}}\int_{2^k}^{2^{k+1}}\chi_\rho(x_1,x_2)(\int_{2^l}^{x_2}\frac{\partial^2 m(2^k,t_2)}{\partial t_2}dt_2)\Hat{f}(x_1,x_2)e^{2\pi i x\cdot y}dx_1dx_2\\
+        &+\int_{2^l}^{2^{l+1}}\int_{2^k}^{2^{k+1}}\chi_\rho(x_1,x_2)m(2^k,2^l)\Hat{f}(x_1,x_2)e^{2\pi i x\cdot y}dx_1dx_2\\
+        =&\int_{2^l}^{2^{l+1}}\int_{2^k}^{2^{k+1}}\int_{t_2}^{2^{l+1}}\int_{t_1}^{2^{k+1}}\chi_\rho(x_1,x_2)\frac{\partial^2 m(t_1,t_2)}{\partial t_1\partial t_2}\Hat{f}(x_1,x_2)e^{2\pi i x\cdot y}dx_1dx_2dt_1dt_2\\
+        &+\int_{2^k}^{2^{k+1}}\int_{2^l}^{2^{l+1}}\int_{t_1}^{2^{k+1}}\chi_\rho(x_1,x_2)\frac{\partial^2 m(t_1,2^l)}{\partial t_1}\Hat{f}(x_1,x_2)e^{2\pi i x\cdot y}dx_1dx_2dt_1\\
+        &+\int_{2^l}^{2^{l+1}}\int_{2^l}^{2^{l+1}}\int_{t_2}^{2^{l+1}}\chi_\rho(x_1,x_2)\frac{\partial^2 m(2^k,t_2)}{\partial t_2}\Hat{f}(x_1,x_2)e^{2\pi i x\cdot y}dx_1dx_2dt_2\\
+        &+m(2^k,2^l)S_\rho f(y_1,y_2)\\
+        =&\int_{2^l}^{2^{l+1}}\int_{2^k}^{2^{k+1}}\frac{\partial^2 m(t_1,t_2)}{\partial t_1\partial t_2}S_tf(y_1,y_2)dt_1dt_2\\
+        &+\int_{2^k}^{2^{k+1}}\frac{\partial^2 m(t_1,2^l)}{\partial t_1}S_{t_1}^{(1)}f(y_1,y_2)dt_1\\
+        &+\int_{2^l}^{2^{l+1}}\frac{\partial^2 m(2^k,t_2)}{\partial t_2}S_{t_2}^{(2)}f(y_1,y_2)dt_2\\
+        &+m(2^k,2^l)S_\rho f(y_1,y_2)\\
+        \end{align*}
+        Thus we have:
+        \begin{align*}
+            S_\rho T_mf=&(\int_{2^l}^{2^{l+1}}\int_{2^k}^{2^{k+1}}S_tf\frac{\partial^2 m(t_1,t_2)}{\partial t_1\partial t_2}dt_1dt_2)+(\int_{2^k}^{2^{k+1}}S_{t_1}^{(1)}f\frac{\partial^2 m(t_1,2^l)}{\partial t_1}dt_1)\\
+            &+(\int_{2^l}^{2^{l+1}}S_{t_2}^{(2)}f\frac{\partial^2 m(2^k,t_2)}{\partial t_2}dt_2)+m(2^k,2^l)S_\rho f
+        \end{align*}
+        Using $(x_1+x_2+x_3+x_4)^2\leq (4\max \abs{x_i})^2\leq 16(\abs{x_1}^2+\abs{x_2}^2+\abs{x_3}^2+\abs{x_4}^2)$, we have:
+        \begin{align*}
+            S_\rho T_mf=&(\int_\rho S_tf_\rho\frac{\partial^2 m(t_1,t_2)}{\partial t_1\partial t_2}dt_1dt_2)^2+(\int_{2^k}^{2^{k+1}}S_{t_1}^{(1)}f_\rho\frac{\partial^2 m(t_1,2^l)}{\partial t_1}dt_1)^2\\
+            &+(\int_{2^l}^{2^{l+1}}S_{t_2}^{(2)}f_\rho\frac{\partial^2 m(2^k,t_2)}{\partial t_2}dt_2)^2+(m(2^k,2^l)f_\rho)^2
+        \end{align*}
+        Using Schwarz's inequality: $(\int{fg})^2\leq (\int{f^2g})(\int g)$, we have inequality (60).\par
+\end{note}
+\begin{note}[Final proof of Marcinkiewicz multiplier theorem]
+    Since $\rho$ is dyadic decomposition, with measure $d\gamma=\abs{\frac{\partial^2 m(t_1,t_2)}{\partial t_1\partial t_2}}dt_1dt_2$ we have:
+\begin{equation*}
+    (\int_{\mathbb{R}^2}\abs{S_t(f_\rho)}^2d\gamma)^\frac{1}{2}=(\sum_\rho\int_{\rho}\abs{S_t(f_\rho)}^2d\gamma)^\frac{1}{2}
+\end{equation*}
+and
+\begin{equation*}
+    \norm{f_\rho}_p=(\int_{\mathbb{R}^2}\abs{f_\rho}^2d\gamma)^\frac{1}{2}=(\sum_\rho\int_{\rho}\abs{f_\rho}^2d\gamma)^\frac{1}{2}
+\end{equation*}
+By theorem 4'' in book, we have:
+\begin{equation*}
+    (\int_{\mathbb{R}^n}(\int_{\mathbb{R}^2}\abs{S_t(f_\rho)}^2d\gamma)^\frac{p}{2}dx)^\frac{1}{p}=\norm{S_t(f_\rho)}_p\leq\norm{f_\rho}_p=(\int_{\mathbb{R}^n}(\int_{\mathbb{R}^2}\abs{f_\rho}^2d\gamma)^\frac{p}{2}dx)^\frac{1}{p}
+\end{equation*}
+Thus 
+\begin{equation*}
+    (\int_{\mathbb{R}^n}(\sum_\rho\int_{\rho}\abs{S_t(f_\rho)}^2d\gamma)^\frac{p}{2}dx)^\frac{1}{p}\leq(\int_{\mathbb{R}^n}(\sum_\rho\int_{\rho}\abs{f_\rho}^2d\gamma)^\frac{p}{2}dx)^\frac{1}{p}
+\end{equation*}
+Notice $f_\rho$ is not related to $\gamma$:
+\begin{align*}
+    (\int_{\mathbb{R}^n}(\sum_\rho\int_{\rho}\abs{f_\rho}^2d\gamma)^\frac{p}{2}dx)^\frac{1}{p}=&(\int_{\mathbb{R}^n}(\sum_\rho\abs{f_\rho}^2\int_{\rho}d\gamma)^\frac{p}{2}dx)^\frac{1}{p}\\
+    \leq& (\int_{\mathbb{R}^n}(\sum_\rho B\abs{f_\rho}^2)^\frac{p}{2}dx)^\frac{1}{p}\\
+    \leq&C(\int_{\mathbb{R}^n}(\sum_\rho \abs{f_\rho}^2)^\frac{p}{2}dx)^\frac{1}{p}
+\end{align*}
+Thus we have our key inequality $\norm{(\sum_\rho(\int_{\rho}\abs{S_t(f_\rho)}^2d\gamma)^\frac{1}{2})}_p\leq C\norm{(\sum_\rho\abs{f_\rho}^2)^\frac{1}{2}}_p$. In book notation this is $\norm{(\sum_\rho\mathfrak{J}_\rho^1)^\frac{1}{2}}_p\leq C\norm{(\sum_\rho\abs{f_\rho}^2)^\frac{1}{2}}_p$.\par
+Finally, we have:
+\begin{align*}
+    \sum_\rho\abs{F_p}^2\leq&\sum_\rho(\int_{\rho}\abs{S_t(f_\rho)}^2d\gamma+\int_{\rho}\abs{S_{t_1}^{(1)}(f_\rho)}^2d\gamma+\int_{\rho}\abs{S_{t_2}^{(2)}(f_\rho)}^2d\gamma+\abs{f_\rho}^2)\\
+    =&\sum_\rho(\mathfrak{J}_\rho^1)+\sum_\rho(\mathfrak{J}_\rho^2)+\sum_\rho(\mathfrak{J}_\rho^3)+\sum_\rho(\mathfrak{J}_\rho^4)
+\end{align*}
+Thus:
+\begin{align*}
+    (\sum_\rho\abs{F_p}^2)^\frac{1}{2}\leq&(\sum_\rho\mathfrak{J}_\rho^1+\sum_\rho\mathfrak{J}_\rho^2+\sum_\rho\mathfrak{J}_\rho^3+\sum_\rho\mathfrak{J}_\rho^4)^\frac{1}{2}\\
+    \leq&(4\max_i\sum_\rho\mathfrak{J}_\rho^i)^\frac{1}{2}\\
+    \leq&2((\sum_\rho\mathfrak{J}_\rho^1)^\frac{1}{2}+(\sum_\rho\mathfrak{J}_\rho^2)^\frac{1}{2}+(\sum_\rho\mathfrak{J}_\rho^3)^\frac{1}{2}+(\sum_\rho\mathfrak{J}_\rho^4)^\frac{1}{2})\\
+\end{align*}
+Taking p-norm on both sides and using triangular inequality, we have
+\begin{align*}
+    \norm{(\sum_\rho\abs{F_p}^2)^\frac{1}{2}}_p\leq &2\norm{(\sum_\rho\mathfrak{J}_\rho^1)^\frac{1}{2}+(\sum_\rho\mathfrak{J}_\rho^2)^\frac{1}{2}+(\sum_\rho\mathfrak{J}_\rho^3)^\frac{1}{2}+(\sum_\rho\mathfrak{J}_\rho^4)^\frac{1}{2}}_p\\
+    \leq &2\norm{(\sum_\rho\mathfrak{J}_\rho^1)^\frac{1}{2}}_p+\norm{(\sum_\rho\mathfrak{J}_\rho^2)^\frac{1}{2}}_p+\norm{(\sum_\rho\mathfrak{J}_\rho^3)^\frac{1}{2}}_p+\norm{(\sum_\rho\mathfrak{J}_\rho^4)^\frac{1}{2}}_p\\
+    \leq& C\norm{(\sum_\rho\abs{f_\rho}^2)^\frac{1}{2}}_p
+\end{align*}
+\end{note}      
 \end{document}
